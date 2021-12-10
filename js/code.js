@@ -57,6 +57,8 @@ function countryInfo(id) {
           else{
             document.getElementById("timezone").textContent += allCountries[country].timezones[0]
           }
+
+          document.getElementById("maps").href = allCountries[country].maps.googleMaps
       
       
 
