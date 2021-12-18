@@ -64,7 +64,7 @@ function countryInfo(id) {
       let allCountries = JSON.parse(this.responseText);
 
       //Makes detail view visible and hides the country table
-      document.getElementById("detailed").style.display = "flex";
+      document.getElementById("detailed").style.display = "block";
       document.getElementById("countriesTable").style.display = "none";
       document.getElementById("countrySearch").value = "";
 
@@ -91,6 +91,7 @@ function countryInfo(id) {
       } else {
         document.getElementById("timezone").textContent += allCountries[country].timezones[0]
       }
+      weather(allCountries[country].capital[0])
     }
   };
   xhttp.open("GET", "https://restcountries.com/v3.1/all", true);
@@ -129,4 +130,66 @@ function closeDetails() {
   document.getElementById("currency").textContent = ""
   document.getElementById("countriesTable").style.display = "flex";
   document.getElementById("detailed").style.display = "none";
+}
+
+
+
+
+
+
+
+
+function weather(city) {
+  var xhttp = new XMLHttpRequest();
+  let capital = city
+
+  // if(metric == false){
+  //   unit = "imperial"
+  //   symbol = "°F "
+
+  // }else{
+  //   unit = "metric"
+  //   symbol = "°C "
+  // }
+
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      let weatherInformation = JSON.parse(this.responseText);
+      
+      document.getElementById("weather").textContent = weatherInformation.main.temp + symbol + weatherInformation.weather[0].description
+
+
+    }
+  };
+  xhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?q="+capital+"&units="+unit+"&appid=650327377c1cb3ced39df3808d48076c", true);
+  xhttp.send();
+}
+
+
+let metric = true;
+let unit = "metric"
+let symbol = "°C "
+let unitButton =  document.getElementById("switch")
+function changeUnit(){
+   metric = !metric
+  
+
+  if(metric == true){
+    metric == true
+    unitButton.style.background = "#2A99F5"
+    unitButton.textContent = "Metric"
+    unitButton.style.color = "#000"
+    unit = "metric"
+    symbol = "°C "
+  }else{
+    metric == false
+    unitButton.style.background = "#154c79"
+    unitButton.textContent = "Imperial"
+    unitButton.style.color = "#fff"
+    unit = "imperial"
+    symbol = "°F "
+
+}
+
+  
 }

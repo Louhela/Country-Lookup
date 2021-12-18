@@ -20,7 +20,9 @@
     <header>
         <img src="images/globe-gc71e7e7a5_1280.png" alt="">
         <h1>Country Lookup</h1>
-
+            <!-- <label for="unit">Imperial</label>
+      <input class="unit" type="checkbox" id="unit"> -->
+          <button class="unitSwitch" id="switch" onclick="changeUnit()">Metric</button>
     </header>
     <div class="content">
 
@@ -28,32 +30,33 @@
             placeholder="Search for a country...">
 
         <div id="detailed" class="detailed">
-            <button onclick="closeDetails()">✖</button>
-            <p>Name: <span id="name"></span></p>
-            <p>Official Name: <span id="officialName"></span></p>
-            <p>Population: <span id="population"></span></p>
-            <p>Country code top-level domain: <span id="domain"></span></p>
-            <p>Capital: <span id="capital"></span></p>
-            <p>Continent: <span id="continent"></span></p>
-            <p>Language: <span id="language"></span></p>
-            <p>Currency: <span id="currency"></span></p>
-            <p>Timezone(s): <span id="timezone"></span></p>
-<<<<<<< Updated upstream
-            <a href="" id="maps" class="maps">Google Maps</a>
-        </div>
-=======
-            <p> <a href="" id="maps" class="maps">Google Maps</a></p>
+            <button onclick="closeDetails()" class="closeDetails">✖</button>
+            <div class="half">
+                <p>Name: <span id="name"></span></p>
+                <p>Official Name: <span id="officialName"></span></p>
+                <p>Population: <span id="population"></span></p>
+                <p>Top-level domain: <span id="domain"></span></p>
+                <p>Capital: <span id="capital"></span></p>
+            </div>
+            <div class="half">
+                <p>Continent: <span id="continent"></span></p>
+                <p>Language: <span id="language"></span></p>
+                <p>Currency: <span id="currency"></span></p>
+                <p>Timezone(s): <span id="timezone"></span></p>
+                <p>Weather in capital: <span id="weather"></span></p>
+                <p><a href="" id="maps" class="maps">Google Maps</a></p>
+            </div>
         </div>
 
 
 
         <div class="loadingSpinner" id="loading"></div>
->>>>>>> Stashed changes
+
         <table id="countriesTable">
             <thead>
                 <tr>
-                    <th onclick>Name</th>
-                    <th onclick>Population</th>
+                    <th>Name</th>
+                    <th>Population</th>
                     <th>Currency</th>
                 </tr>
             </thead>
@@ -1320,9 +1323,5 @@
         <a href="https://github.com/Louhela"> <i class="fa fa-github fa-2x"></i> </a>
     </footer>
 </body>
-<<<<<<< Updated upstream
-</html>
-=======
 
 </html>
->>>>>>> Stashed changes
