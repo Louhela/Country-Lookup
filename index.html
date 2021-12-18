@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,15 +12,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
     </style>
-
 </head>
 
 <body onload="fillTable()">
     <header>
         <img src="images/globe-gc71e7e7a5_1280.png" alt="">
         <h1>Country Lookup</h1>
-            <!-- <label for="unit">Imperial</label>
-      <input class="unit" type="checkbox" id="unit"> -->
           <button class="unitSwitch" id="switch" onclick="changeUnit()">Metric</button>
     </header>
     <div class="content">
@@ -46,12 +42,20 @@
                 <p>Weather in capital: <span id="weather"></span></p>
                 <p><a href="" id="maps" class="maps">Google Maps</a></p>
             </div>
+            <button onclick="closeDetails()">✖</button>
+            <p>Name: <span id="name"></span></p>
+            <p>Official Name: <span id="officialName"></span></p>
+            <p>Population: <span id="population"></span></p>
+            <p>Country code top-level domain: <span id="domain"></span></p>
+            <p>Capital: <span id="capital"></span></p>
+            <p>Continent: <span id="continent"></span></p>
+            <p>Language: <span id="language"></span></p>
+            <p>Currency: <span id="currency"></span></p>
+            <p>Timezone(s): <span id="timezone"></span></p>
+            <p> <a href="" id="maps" class="maps">Google Maps</a></p>
+
         </div>
-
-
-
         <div class="loadingSpinner" id="loading"></div>
-
         <table id="countriesTable">
             <thead>
                 <tr>
@@ -1313,8 +1317,6 @@
                 </tr>
             </tbody>
         </table>
-
-
     </div>
     <div class="background"><img src="images/world-map-297446.svg" alt=""></div>
 
@@ -1323,5 +1325,7 @@
         <a href="https://github.com/Louhela"> <i class="fa fa-github fa-2x"></i> </a>
     </footer>
 </body>
-
 </html>
+
+
+
