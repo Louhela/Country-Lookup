@@ -6,13 +6,13 @@ for (i = 0; i < 250; i++) {
   let currency = "cur" + rowNumber
   //Adds click event listener to data cells that returns the ID of clicked element as parameter
   document.getElementById(name).addEventListener("click", function () {
-    countryInfo(this.id)
+    details(this.id)
   })
   document.getElementById(population).addEventListener("click", function () {
-    countryInfo(this.id)
+    details(this.id)
   })
   document.getElementById(currency).addEventListener("click", function () {
-    countryInfo(this.id)
+    details(this.id)
   })
   rowNumber++
 }
@@ -54,7 +54,10 @@ function fillTable() {
 
 
 //Gets details about selected country
-function countryInfo(id) {
+function details(id) {
+  //Hides contry table and shows the loading spinner
+  document.getElementById("countriesTable").style.display = "none";
+  document.getElementById("loading").style.display = "block"
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -63,9 +66,9 @@ function countryInfo(id) {
       let country = id.replace(/\D/g, '') - 1;
       let allCountries = JSON.parse(this.responseText);
 
-      //Makes detail view visible and hides the country table
+      //Makes detail view visible and hides the loading spinner
+      document.getElementById("loading").style.display = "none"
       document.getElementById("detailed").style.display = "block";
-      document.getElementById("countriesTable").style.display = "none";
       document.getElementById("countrySearch").value = "";
 
       //Sets text content for detailed view
@@ -142,15 +145,6 @@ function closeDetails() {
 function weather(city) {
   var xhttp = new XMLHttpRequest();
   let capital = city
-
-  // if(metric == false){
-  //   unit = "imperial"
-  //   symbol = "°F "
-
-  // }else{
-  //   unit = "metric"
-  //   symbol = "°C "
-  // }
 
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
