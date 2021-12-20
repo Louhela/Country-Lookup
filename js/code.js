@@ -1,24 +1,15 @@
-//Add event listeners
-let rowNumber = 1;
-for (i = 0; i < 250; i++) {
-  let name = "name" + rowNumber
-  let population = "pop" + rowNumber
-  let currency = "cur" + rowNumber
-  //Adds click event listener to data cells that returns the ID of clicked element as parameter
-  document.getElementById(name).addEventListener("click", function () {
-    details(this.id)
-  })
-  document.getElementById(population).addEventListener("click", function () {
-    details(this.id)
-  })
-  document.getElementById(currency).addEventListener("click", function () {
-    details(this.id)
-  })
-  rowNumber++
+//Fills the country table, called when site is loaded
+fillTable()
+function settings(){
+  let settingsInterface = document.getElementById("settingsInterface")
+  if(settingsInterface.style.display == "block"){
+      settingsInterface.style.display = "none"
+  }else{
+      settingsInterface.style.display = "block"
+  }
+  
 }
 
-
-//Fills the country table, called when site is loaded
 function fillTable() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -135,13 +126,7 @@ function closeDetails() {
   document.getElementById("detailed").style.display = "none";
 }
 
-
-
-
-
-
-
-
+//Gets weather info of selected countrys capital unit preference is stored locally and can be changed in settings menu
 function weather(city) {
   var xhttp = new XMLHttpRequest();
   let capital = city
@@ -157,33 +142,4 @@ function weather(city) {
   };
   xhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?q="+capital+"&units="+unit+"&appid=650327377c1cb3ced39df3808d48076c", true);
   xhttp.send();
-}
-
-
-let metric = true;
-let unit = "metric"
-let symbol = "°C "
-let unitButton =  document.getElementById("switch")
-function changeUnit(){
-   metric = !metric
-  
-
-  if(metric == true){
-    metric == true
-    unitButton.style.background = "#2A99F5"
-    unitButton.textContent = "Metric"
-    unitButton.style.color = "#000"
-    unit = "metric"
-    symbol = "°C "
-  }else{
-    metric == false
-    unitButton.style.background = "#154c79"
-    unitButton.textContent = "Imperial"
-    unitButton.style.color = "#fff"
-    unit = "imperial"
-    symbol = "°F "
-
-}
-
-  
 }

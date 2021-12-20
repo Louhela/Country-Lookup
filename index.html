@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/globe-gc71e7e7a5_1280.png" type="image/x-icon">
     <title>Country Lookup</title>
+    <style> @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');</style>
     <link rel="stylesheet" href="styles/style.css">
     <script src="https://kit.fontawesome.com/cd08e9c581.js" crossorigin="anonymous"></script>
+    <script src="js/userPreferences.js" defer></script>
     <script src="js/code.js" defer></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
-    </style>
+    <script src="js/events.js" defer></script>
+    
 </head>
 
-<body onload="fillTable()">
+<body>
     <header>
         <img src="images/globe-gc71e7e7a5_1280.png" alt="">
         <h1>Country Lookup</h1>
-          <button class="unitSwitch" id="switch" onclick="changeUnit()">Metric</button>
+        <i class="settingsButton fas fa-cog fa-2x" id="settingsButton"></i>
     </header>
+    <div class="settings" id="settingsInterface">
+        <button class="unitSwitch" id="unitSwitch">Metric</button>
+        <button class="themeToggle" id="dark-mode-toggle">Theme</button>
+    </div>
+
+
     <div class="content">
 
-        <input type="text" id="countrySearch" class="countrySearch" onkeyup="search();closeDetails()"
-            placeholder="Search for a country...">
+        <input type="text" id="countrySearch" class="countrySearch" placeholder="Search for a country...">
 
         <div id="detailed" class="detailed">
-            <button onclick="closeDetails()" class="closeDetails">✖</button>
+            <button id="closeDetails" class="closeDetails">✖</button>
             <div class="half">
                 <p>Name: <span id="name"></span></p>
                 <p>Official Name: <span id="officialName"></span></p>
@@ -1313,7 +1320,5 @@
         <a href="https://github.com/Louhela"> <i class="fa fa-github fa-2x"></i> </a>
     </footer>
 </body>
+
 </html>
-
-
-
