@@ -36,16 +36,16 @@ const unitToggle = document.getElementById('unitSwitch');
 
 const unitMetric = () => {
   localStorage.setItem('userPreferredUnit', 'metric');
-  unitToggle.textContent = "Metric"
+  unitToggle.textContent = "Imperial"
   unit = "metric"
   symbol = "°C "
 };
 
 const unitImperial = () => {
   localStorage.setItem('userPreferredUnit', 'imperial');
-  unitToggle.textContent = "Imperial"
-  unit = "imperial"
-  symbol = "°F "
+       unitToggle.textContent = "Metric"
+        unit = "imperial"
+        symbol = "°F "
 };
 
 if (userPreferredUnit === 'metric' || userPreferredUnit == null) {
