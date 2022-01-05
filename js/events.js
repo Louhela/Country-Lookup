@@ -16,11 +16,17 @@ for (i = 0; i < 250; i++) {
   })
   rowNumber++
 }
+
+
 document.getElementById('settingsButton').addEventListener("click", function () {
-    settings()})
+  settings()
+})
 
 document.getElementById('countrySearch').addEventListener("keyup", function () {
-    search();closeDetails()})
+  search();
+  closeDetails()
+})
 
 document.getElementById('closeDetails').addEventListener("click", function () {
-    closeDetails()})
+  closeDetails()
+})

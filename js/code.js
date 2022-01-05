@@ -1,13 +1,14 @@
 //Fills the country table, called when site is loaded
 fillTable()
-function settings(){
+
+function settings() {
   let settingsInterface = document.getElementById("settingsInterface")
-  if(settingsInterface.style.display == "block"){
-      settingsInterface.style.display = "none"
-  }else{
-      settingsInterface.style.display = "block"
+  if (settingsInterface.style.display == "block") {
+    settingsInterface.style.display = "none"
+  } else {
+    settingsInterface.style.display = "block"
   }
-  
+
 }
 
 function fillTable() {
@@ -35,7 +36,9 @@ function fillTable() {
         rowNumber2++
       }
       //When the table has been filled the table becomes visible
-      document.getElementById("countriesTable").style.display = "flex"
+      document.getElementById("tableSection").style.display = "block"
+
+      // document.getElementById("countriesTable").style.display = "table"
       document.getElementById("loading").style.display = "none"
     }
   };
@@ -47,7 +50,7 @@ function fillTable() {
 //Gets details about selected country
 function details(id) {
   //Hides contry table and shows the loading spinner
-  document.getElementById("countriesTable").style.display = "none";
+  document.getElementById("tableSection").style.display = "none";
   document.getElementById("loading").style.display = "block"
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -102,12 +105,13 @@ function search() {
   table = document.getElementById("countriesTable");
   tr = table.getElementsByTagName("tr");
 
-  // Loop through all table rows, and hide those who don't match the search query
+
+  // Loop through all table rows, and hide those which don't match the search
   for (i = 0; i < tr.length; i++) {
 
     td = tr[i].getElementsByTagName("td")[0];
     if (td) {
-      txtValue = td.textContent || td.innerText;
+      txtValue = td.textContent;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
@@ -122,7 +126,7 @@ function closeDetails() {
   search()
   document.getElementById("timezone").textContent = ""
   document.getElementById("currency").textContent = ""
-  document.getElementById("countriesTable").style.display = "flex";
+  document.getElementById("tableSection").style.display = "block"
   document.getElementById("detailed").style.display = "none";
 }
 
@@ -134,12 +138,12 @@ function weather(city) {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       let weatherInformation = JSON.parse(this.responseText);
-      
+
       document.getElementById("weather").textContent = weatherInformation.main.temp + symbol + weatherInformation.weather[0].description
 
 
     }
   };
-  xhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?q="+capital+"&units="+unit+"&appid=650327377c1cb3ced39df3808d48076c", true);
+  xhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + capital + "&units=" + unit + "&appid=650327377c1cb3ced39df3808d48076c", true);
   xhttp.send();
 }

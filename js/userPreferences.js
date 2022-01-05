@@ -1,28 +1,30 @@
-//Dark mode, setting is stored in local storage
+//Dark mode setting is stored in local storage and can be changed in settings menu
 let darkMode = localStorage.getItem('darkMode');
 const darkModeToggle = document.getElementById('dark-mode-toggle');
+darkModeToggle.textContent = "Light"
 
 const enableDarkMode = () => {
   document.body.classList.add('darkMode');
   localStorage.setItem('darkMode', 'enabled');
-  darkModeToggle.textContent = "Light";
+  darkModeToggle.textContent = "Dark";
+
 };
 
 const disableDarkMode = () => {
   document.body.classList.remove('darkMode');
   localStorage.setItem('darkMode', null);
-  darkModeToggle.textContent = "Dark";
+  darkModeToggle.textContent = "Light";
 };
 
-if(darkMode === 'enabled'){
+if (darkMode === 'enabled') {
   enableDarkMode();
 }
 
 darkModeToggle.addEventListener("click", () => {
   darkMode = localStorage.getItem('darkMode');
-  if(darkMode !== 'enabled'){
+  if (darkMode !== 'enabled') {
     enableDarkMode();
-  }else{
+  } else {
     disableDarkMode();
   }
 });
@@ -30,6 +32,7 @@ darkModeToggle.addEventListener("click", () => {
 //Users preferred unit is stored in local storage, preferred unit can be changed in settings menu
 let userPreferredUnit = localStorage.getItem('userPreferredUnit');
 const unitToggle = document.getElementById('unitSwitch');
+
 
 const unitMetric = () => {
   localStorage.setItem('userPreferredUnit', 'metric');
@@ -40,22 +43,22 @@ const unitMetric = () => {
 
 const unitImperial = () => {
   localStorage.setItem('userPreferredUnit', 'imperial');
-       unitToggle.textContent = "Imperial"
-        unit = "imperial"
-        symbol = "°F "
+  unitToggle.textContent = "Imperial"
+  unit = "imperial"
+  symbol = "°F "
 };
 
-if(userPreferredUnit === 'metric'){
+if (userPreferredUnit === 'metric' || userPreferredUnit == null) {
   unitMetric();
-}else{
+} else {
   unitImperial();
 }
 
 unitToggle.addEventListener("click", () => {
   unit = localStorage.getItem('userPreferredUnit');
-  if(unit !== 'metric'){
+  if (unit !== 'metric') {
     unitMetric();
-  }else{
+  } else {
     unitImperial();
   }
 });
